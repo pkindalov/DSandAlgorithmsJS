@@ -112,5 +112,15 @@ test('if other element stay after deleting', () => {
     myarr.push(3);
     myarr.push(4);
     myarr.deleteAt(1);
-    expect(Object.values(myarr.data)).toContain(3);
+    expect(Object.values(myarr.data)).toEqual(expect.arrayContaining([1, 3, 4]));
+});
+
+test('deleting last element', () => {
+    myarr = getInstanceOfArray();
+    myarr.push(1);
+    myarr.push(2);
+    myarr.push(3);
+    myarr.push(4);
+    myarr.deleteAt(3);
+    expect(Object.values(myarr.data)).toEqual(expect.arrayContaining([1, 2 , 3]));
 });
