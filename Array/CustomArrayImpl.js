@@ -4,49 +4,34 @@ class CustomArrayImpl {
 		this.data = {};
 	}
 	get(index) {
-		try {
-			if (!this.isIndexValid(index)) this.errTrower('Invalid index. Expect integer number.');
-			return this.data[index];
-		} catch (ex) {
-			console.log(ex.message);
-		}
+		if (!this.isThereAnyData()) this.errTrower('There no data to get');
+		if (!this.isIndexValid(index)) this.errTrower('Invalid index. Expect integer number.');
+		return this.data[index];
 	}
 
 	push(item) {
-		try {
-			this.data[this.length] = item;
-			this.length++;
-			return this;
-		} catch (ex) {
-			console.log(ex.message);
-		}
+		this.data[this.length] = item;
+		this.length++;
+		return this;
 	}
 
 	pop() {
-		try {
-			if (!this.isThereAnyData())
-				this.errTrower('There is no data. Cannot get last element from nothing. Firstly add elements');
-			const lastElement = this.data[this.length - 1];
-			this.removeElement(this.length - 1);
-			this.length--;
-			return lastElement;
-		} catch (ex) {
-			console.log(ex.message);
-		}
+		if (!this.isThereAnyData())
+			this.errTrower('There is no data. Cannot get last element from nothing. Firstly add elements');
+		const lastElement = this.data[this.length - 1];
+		this.removeElement(this.length - 1);
+		this.length--;
+		return lastElement;
 	}
 
 	deleteAt(index) {
-		try {
-			if (!this.isThereAnyData()) this.errTrower('The structure is empty. There is nothing to delete');
-			if (!this.isIndexValid(index)) this.errTrower('Invalid index. Expect integer number.');
-			const element = this.data[index];
-			this.shiftElements(index);
-			this.removeElement(this.length - 1);
-			this.length--;
-			return element;
-		} catch (ex) {
-			console.log(ex.message);
-		}
+		if (!this.isThereAnyData()) this.errTrower('The structure is empty. There is nothing to delete');
+		if (!this.isIndexValid(index)) this.errTrower('Invalid index. Expect integer number.');
+		const element = this.data[index];
+		this.shiftElements(index);
+		this.removeElement(this.length - 1);
+		this.length--;
+		return element;
 	}
 
 	//helper private class methods
@@ -55,7 +40,7 @@ class CustomArrayImpl {
 	}
 
 	isIndexValid(index) {
-		return Number.isInteger(index) && index >= 0;
+		return Number.isInteger(index) && index >= 0 && this.data[index];
 	}
 	isThereAnyData() {
 		return this.length > 0;
@@ -73,19 +58,7 @@ class CustomArrayImpl {
 }
 
 function getInstanceOfArray() {
-	return new CustomArrayImpl;
+	return new CustomArrayImpl();
 }
-module.exports = getInstanceOfArray;
-// const arr = new CustomArrayImpl();
-// arr.push('hi');
-// arr.push('second element');
-// arr.push('3 element');
-// arr.push('4 element');
 
-// console.log(arr);
-// arr.deleteAt(0);
-// arr.pop();
-// arr.pop();
-// console.log(arr);
-// arr.pop();
-// arr.get(-1);
+module.exports = getInstanceOfArray;
