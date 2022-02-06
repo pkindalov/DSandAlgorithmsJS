@@ -47,6 +47,21 @@ class HashTable {
 		// }
 		return keys;
 	}
+	values() {
+		if (!this.data.length) return undefined;
+		let values = [];
+		this.data.forEach(shelf => {
+			//collision check to get collision data.
+			if (shelf && shelf.length > 1) {
+				shelf.forEach(collisionData => {
+					values.push(collisionData[1]);
+				});
+			} else {
+				values.push(shelf[0][1]);
+			}
+		});
+		return values;
+	}
 }
 
 const myHashTable = new HashTable(4);
@@ -58,3 +73,4 @@ myHashTable.set('oranges', 2);
 myHashTable.set('bananas', 14);
 // myHashTable.keys();
 console.log(myHashTable.keys());
+console.log(myHashTable.values());
