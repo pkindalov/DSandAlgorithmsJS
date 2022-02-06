@@ -17,14 +17,16 @@ class HashTable {
 		if(!this.data[addressIndex]){
 			this.data[addressIndex] = [];
 		}
-		this.data[addressIndex].push(key, value);
+		this.data[addressIndex].push([key, value]);
+		return this.data;
 	}
 	get(key) {
 		const addressIndex = this._hash(key);
-		if(!this.data[addressIndex]) return undefined;
-		for(let i = 0; i < this.data[addressIndex].length; i++) {
-			if(this.data[addressIndex][0] === key)
-				return this.data[addressIndex][1];
+		const currentAdrressData = this.data[addressIndex];
+		if(!currentAdrressData) return undefined;
+		for(let i = 0; i < currentAdrressData.length; i++) {
+			if(currentAdrressData[i][0] === key)
+				return currentAdrressData[i][1];
 		}
 	}
   }
