@@ -21,6 +21,8 @@ function firstRecurringCharacter(input) {
     return undefined;
 }
 
+module.exports = firstRecurringCharacter;
+
 // console.log(firstRecurringCharacter([2,5,1,2,3,5,1,2,4]));
 // console.log(firstRecurringCharacter([2,1,1,2,3,5,1,2,4]));
 // console.log(firstRecurringCharacter([2,3,4,5]));
