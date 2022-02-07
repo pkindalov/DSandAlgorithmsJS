@@ -1,7 +1,6 @@
 const { expect, test } = require('@jest/globals');
 const getInstanceOfArray = require('../CustomArrayImpl');
-let myarr = getInstanceOfArray();
-// console.log(myarr);
+let myarr;
 
 test('if myarr hold an object', () => {
     myarr = getInstanceOfArray();
