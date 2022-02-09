@@ -43,7 +43,7 @@ class LinkedList {
             value: value,
             next: null
         };
-        //my idea
+        //my try
         // if(index === 0) {
         //     this.prepend(value);
         //     return this.print();
@@ -75,6 +75,21 @@ class LinkedList {
         this.length++;
         return this.print();
     }
+
+    remove(index) {
+        if (index === 0) {
+            let secondItem = this.head.next;
+            this.head = secondItem;
+            this.length--;
+            return this.print();
+        }
+        const leader = this.traverseToIndex(index - 1);
+        let holdingPointer = leader.next;
+        leader.next = holdingPointer.next;
+        holdingPointer = null;
+        this.length--;
+        return this.print();
+    }
     traverseToIndex(index) {
         let counter = 0;
         let currentItem = this.head;
@@ -94,3 +109,6 @@ console.log(list.print());
 list.insert(2, 99);
 list.insert(20, 88);
 console.log(list.print());
+console.log(list.remove(0));
+console.log(list.remove(0));
+console.log(list.remove(3));
