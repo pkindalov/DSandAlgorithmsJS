@@ -43,12 +43,11 @@ class LinkedList {
             value: value,
             next: null
         };
+        if (index === 0) {
+            this.prepend(value);
+            return this.print();
+        }
         //my try
-        // if(index === 0) {
-        //     this.prepend(value);
-        //     return this.print();
-        // }
-
         // if(index >= this.length) return this.append(value);
         // let prevItem = this.head;
         // let indexCount = 1;
@@ -90,6 +89,9 @@ class LinkedList {
         this.length--;
         return this.print();
     }
+    size() {
+        return this.length;
+    }
     traverseToIndex(index) {
         let counter = 0;
         let currentItem = this.head;
@@ -101,14 +103,8 @@ class LinkedList {
     }
 }
 
-const list = new LinkedList(10);
-list.append(5);
-list.append(16);
-list.prepend(1);
-console.log(list.print());
-list.insert(2, 99);
-list.insert(20, 88);
-console.log(list.print());
-console.log(list.remove(0));
-console.log(list.remove(0));
-console.log(list.remove(3));
+function getInstance(count) {
+    return new LinkedList(count);
+}
+
+module.exports = getInstance;
