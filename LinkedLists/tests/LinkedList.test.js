@@ -104,3 +104,74 @@ test('test if remove delete correctly element in the middle', () => {
     list.remove(2);
     expect(list.print()).toEqual(expect.arrayContaining([10, 2, 4, 5, 6]));
 });
+
+test('test if the elements are reversed correctly', () => {
+    list = getInstance(firstItem);
+    const items = [2, 3, 4, 5, 6];
+    items.forEach(num => list.append(num));
+    list.reverse();
+    expect(list.print()).toEqual(expect.arrayContaining([6, 5, 4, 3, 2, 10]));
+});
+
+test('test if the elements are reversed correctly after removing item', ()=> {
+    list = getInstance(firstItem);
+    const items = [2, 3, 4, 5, 6];
+    items.forEach(num => list.append(num));
+    list.remove(2);
+    list.reverse();
+    expect(list.print()).toEqual(expect.arrayContaining([6, 5, 4, 2, 10]));
+});
+
+test('test if elements are reversed correctly when deleting the head', () => {
+    list = getInstance(firstItem);
+    const items = [2, 3, 4, 5, 6];
+    items.forEach(num => list.append(num));
+    list.remove(0);
+    list.reverse();
+    expect(list.print()).toEqual(expect.arrayContaining([6, 5, 4, 3, 2]));
+});
+
+test('test if elements are reversed correctly when deleting the tail', () => {
+    list = getInstance(firstItem);
+    const items = [2, 3, 4, 5, 6];
+    items.forEach(num => list.append(num));
+    list.remove(list.size() - 1);
+    list.reverse();
+    expect(list.print()).toEqual(expect.arrayContaining([5, 4, 3, 2, 10]));
+});
+
+test('test if the elements are reversed correctly when prepend element', () => {
+    list = getInstance(firstItem);
+    const items = [2, 3, 4, 5, 6];
+    items.forEach(num => list.append(num));
+    list.prepend(1);
+    list.reverse();
+    expect(list.print()).toEqual(expect.arrayContaining([1, 10, 6, 5, 4, 3, 2]));
+});
+
+test('test if the elements are reversed correctly after insert at index 0', () => {
+    list = getInstance(firstItem);
+    const items = [2, 3, 4, 5, 6];
+    items.forEach(num => list.append(num));
+    list.insert(0, 99);
+    list.reverse();
+    expect(list.print()).toEqual(expect.arrayContaining([6, 5, 4, 3, 2, 10, 99]));
+});
+
+test('test if the elements are reversed correctly after insert new item at the end', () => {
+    list = getInstance(firstItem);
+    const items = [2, 3, 4, 5, 6];
+    items.forEach(num => list.append(num));
+    list.insert(list.size() - 1, 99);
+    list.reverse();
+    expect(list.print()).toEqual(expect.arrayContaining([99, 6, 5, 4, 3, 2, 10]));
+});
+
+test('test if elements are reversed correctly after insert new item at the middle', () => {
+    list = getInstance(firstItem);
+    const items = [2, 3, 4, 5, 6];
+    items.forEach(num => list.append(num));
+    list.insert(4, 99);
+    list.reverse();
+    expect(list.print()).toEqual(expect.arrayContaining([6, 5, 99, 4, 3, 2, 10]));
+});

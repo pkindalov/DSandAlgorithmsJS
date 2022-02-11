@@ -96,11 +96,3 @@ test('test if remove delete correctly the last element', () => {
     list.remove(list.size() - 1);
     expect(list.print()).toEqual(expect.arrayContaining([10, 2, 3, 4, 5]));
 });
-
-test('test if remove delete correctly element in the middle', () => {
-    list = getInstance(firstItem);
-    const items = [2, 3, 4, 5, 6];
-    items.forEach(num => list.append(num));
-    list.remove(2);
-    expect(list.print()).toEqual(expect.arrayContaining([10, 2, 4, 5, 6]));
-});
