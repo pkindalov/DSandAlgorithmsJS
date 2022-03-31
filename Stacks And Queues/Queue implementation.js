@@ -12,20 +12,20 @@ class Queue {
 		this.length = 0;
 	}
 	peek() {
-        return this.first;
-    }
+		return this.first;
+	}
 	enqueue(value) {
-        const newNode = new Node(value);
-        if(this.length === 0) {
-            this.first = newNode;
-            this.last = newNode;
-            this.length++;
-            return this;
-        }
-        const holdingPointer = this.last;
-        this.last.next = newNode;
-        this.last = newNode;
-    }
+		const newNode = new Node(value);
+		if (this.length === 0) {
+			this.first = newNode;
+			this.last = newNode;
+			this.length++;
+			return this;
+		}
+		const holdingPointer = this.last;
+		this.last.next = newNode;
+		this.last = newNode;
+	}
 	dequeue() {}
 	//isEmpty;
 }

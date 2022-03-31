@@ -16,7 +16,7 @@ class Stack {
 	}
 	push(value) {
 		const newNode = new Node(value);
-		if(this.length === 0) {
+		if (this.length === 0) {
 			this.top = newNode;
 			this.bottom = newNode;
 			this.length++;
@@ -32,7 +32,7 @@ class Stack {
 		if (this.top === null || this.top.next === null) {
 			return null;
 		}
-		if(this.top === this.bottom) this.bottom = null;
+		if (this.top === this.bottom) this.bottom = null;
 		const holdingPointer = this.top;
 		this.top = this.top.next;
 		this.length--;
@@ -41,9 +41,9 @@ class Stack {
 	isEmpty() {
 		return this.length === 0;
 	}
-  size() {
-    return this.length;
-  }
+	size() {
+		return this.length;
+	}
 }
 
 function getInstance() {

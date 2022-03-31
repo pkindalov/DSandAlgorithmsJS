@@ -14,8 +14,8 @@ class Stack {
 		return this;
 	}
 	isEmpty() {
-        return this.array.length === 0;
-    }
+		return this.array.length === 0;
+	}
 }
 
 const myStack = new Stack();
